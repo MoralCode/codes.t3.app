@@ -49,11 +49,11 @@ modules:
     sources:
       - type: file
         dest-filename: Cursor.AppImage
-        url: https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.3
-        sha256: 22d520927333483797c4ddd88bfa73db0668cfbbd556ac7d9c65ee1a66c76d77
+        url: https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.5
+        sha256: 72cbe3d131ce5ff44f8bb0e872fd37de68bc0e510e11d9e314843c8cbec73cef
         x-checker-data:
           type: rotating-url
-          url: https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.3
+          url: https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.5
           dest-filename: Cursor.AppImage
       # These are the metadata files from our project directory
       - type: file
