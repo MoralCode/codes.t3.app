@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@anthropic-ai/claude-code": "^2.1.87",
     "codex-monorepo": "github:openai/codex"
   }
 }
