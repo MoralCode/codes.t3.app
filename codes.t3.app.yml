@@ -31,6 +31,21 @@ finish-args:
 
 modules:
   # - shared-modules/libcanberra/libcanberra.json
+  - name: claude-code
+    buildsystem: simple
+    build-commands:
+      # 1. Create the destination directory in the Flatpak runtime
+      - install -d /app/bin
+      # 2. Move the downloaded binary and rename it to 'claude'
+      - install -D claude /app/bin/claude
+    sources:
+      - type: file
+        # Replace {version} and {platform} with the specific ones you need
+        # e.g., https://.../0.5.1/linux-x64/claude
+        # visit https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/latest to see the latest version number
+        url: https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.87/linux-x64/claude
+        sha256: b1a5b89469862adee0e4dc28cab5a8314bc4d0117e19ab26a7b7ff7ce9b59bd5
+        dest-filename: claude
   - name: squashfs-tools
     cleanup: [ '/bin/sqsh*', '/include', '/lib', '/share' ]
     sources:
