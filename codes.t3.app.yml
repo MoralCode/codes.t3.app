@@ -49,8 +49,9 @@ modules:
       # 1. Create the destination directory in the Flatpak runtime
       - install -d /app/bin
       # 2. Move the downloaded binary and rename it to 'claude'
-      - npm install --offline --prefix /app
-      - install -D claude /app/bin/claude
+      - npm install --offline 
+      - cp -R node_modules /app/
+      - ln -s /app/node_modules/.bin/claude /app/bin/claude
     sources:
       - type: file
         # Replace {version} and {platform} with the specific ones you need
