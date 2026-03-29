@@ -1,10 +1,10 @@
-# Cursor AI - Building a restrictive Flatpak
+# codes.t3.app - Building a restrictive Flatpak
 
 This repository contains the necessary files and automation to build a
-restrictive, sandboxed Flatpak for the [Cursor AI](https://cursor.sh/) code
+restrictive, sandboxed Flatpak for the [codes.t3.app](https://codes.t3.app) code
 editor.
 
-The primary goal is to provide a secure environment for running Cursor by
+The primary goal is to provide a secure environment for running codes.t3.app by
 limiting its access to the host system. The build process is automated with a
 `Makefile`, requiring only the version number and download URL for a new release
 to build and package it.
@@ -112,7 +112,7 @@ For easy, on-the-fly permission management *without* rebuilding, you can use
     flatpak install flathub com.github.tchx84.Flatseal
     ```
 
-2. **Launch Flatseal** and select "Cursor" from the list of applications.
+2. **Launch Flatseal** and select "codes.t3.app" from the list of applications.
 3. You can now toggle permissions for filesystem access, network sockets, device
 access, and more. Changes are applied instantly.
 
