@@ -30,8 +30,7 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
 
 modules:
-  # Module for the Cursor application itself
-  - shared-modules/libcanberra/libcanberra.json
+  # - shared-modules/libcanberra/libcanberra.json
   - name: squashfs-tools
     cleanup: [ '/bin/sqsh*', '/include', '/lib', '/share' ]
     sources:
@@ -45,25 +44,25 @@ modules:
       # Manually install ONLY the binaries to avoid the /usr/local error
       - install -D squashfs-tools/unsquashfs /app/bin/unsquashfs
       - install -D squashfs-tools/mksquashfs /app/bin/mksquashfs
-  - name: cursor
+  - name: t3codes
     buildsystem: simple
     build-commands:
       - |
-        OFFSET=$(grep -aboh "hsqs" Cursor.AppImage | tail -n 1 | cut -d: -f1)
+        OFFSET=$(grep -aboh "hsqs" T3Codes.AppImage | tail -n 1 | cut -d: -f1)
         echo $OFFSET
-        unsquashfs -f -d squashfs-root -o $OFFSET Cursor.AppImage
+        unsquashfs -f -d squashfs-root -o $OFFSET T3Codes.AppImage
       # Copy the extracted AppImage contents into the /app directory
       - cp -r squashfs-root/usr /app/usr
       # Install metadata files
       - install -Dm644 codes.t3.app.desktop /app/share/applications/codes.t3.app.desktop
       - install -Dm644 codes.t3.app.appdata.xml /app/share/metainfo/codes.t3.app.appdata.xml
       - mkdir -p /app/share/icons/hicolor/256x256/apps
-      - ffmpeg -width 256 -i squashfs-root/usr/share/pixmaps/co.anysphere.cursor.png -vf scale=256:-1 -frames:v 1 /app/share/icons/hicolor/256x256/apps/codes.t3.app.png
+      # - ffmpeg -width 256 -i squashfs-root/usr/share/pixmaps/co.anysphere.cursor.png -vf scale=256:-1 -frames:v 1 /app/share/icons/hicolor/256x256/apps/codes.t3.app.png
       - install -Dm755 run.sh /app/bin/zypak-run.sh
       - rm -rf squashfs-root
     sources:
       - type: file
-        dest-filename: Cursor.AppImage
+        dest-filename: T3Codes.AppImage
         url: https://github.com/pingdotgg/t3code/releases/download/v0.0.14/T3-Code-0.0.14-x86_64.AppImage
         sha256: 9a26994c5dd7310c2ce44d15948b758a84b763bd556f6705df9a65d91cf45700
 
