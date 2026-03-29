@@ -63,7 +63,7 @@ modules:
       - type: file
         dest-filename: Cursor.AppImage
         url: https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.6
-        sha256: 668840556b1d7b97ce69cd092fd91cf2a97f646a216dced2d324ad0115d05525
+        sha256: ae63d7069207229f3bc85d0f0c986a220bed5ce5584f42571d3eba6329f08208
         x-checker-data:
           type: rotating-url
           url: https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.3
