@@ -52,27 +52,9 @@ to be launched from your desktop environment's application menu.
 
 The build process is managed entirely by the `Makefile`.
 
-1. **Find the Release URL and Version:**
-Go to the [Cursor Download History](https://github.com/oslook/cursor-ai-downloads)
-or the official website to find the download URL for the Linux AppImage of the
-version you want to package.
-
-2. **Run the Build Command:**
-From the root of this project directory, run the `make` command, providing
-the `VERSION` and `CURSOR_URL` as arguments.
-
-    **Example:**
-
-    ```bash
-    make build VERSION=x.y.z
-    CURSOR_URL="URL_FOR_XYZ_RELEASE_OBTAINED_FROM_WEBSITE"
-    ```
-
-    This command will:
-    - Download the specified AppImage.
-    - Make it executable and extract its contents.
-    - Update the version number in the `appdata.xml` file.
-    - Run `flatpak-builder` to create the Flatpak in a `build-dir` directory.
+1. **prepare the dependencies**
+Run `./scripts/npm-deps.sh .`
+2. 
 
 3. **Install the Flatpak:**
 Once the build is complete, you can install it for your user with:
@@ -81,7 +63,7 @@ Once the build is complete, you can install it for your user with:
     make install
     ```
 
-4. **Run the Application:**
+1. **Run the Application:**
 
 Once installed, you can normally run your application with:
 
