@@ -1,9 +1,9 @@
 <!-- codes.t3.app.appdata.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>com.cursor.App</id>
+  <id>codes.t3.app</id>
   
-  <name>Cursor</name>
+  <name>T3 Codes</name>
   <summary>The AI-first Code Editor</summary>
   
   <metadata_license>CC0-1.0</metadata_license>
@@ -15,10 +15,10 @@
     </p>
   </description>
   
-  <launchable type="desktop-id">com.cursor.App.desktop</launchable>
+  <launchable type="desktop-id">codes.t3.app.desktop</launchable>
   
   <releases>
-    <release version="1.2.2" date-iso="2025-07-03"/>
+    <release version="0.0.14" date-iso="2025-07-03"/>
   </releases>
 
   <content_rating type="oars-1.1" />

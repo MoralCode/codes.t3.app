@@ -1,6 +1,6 @@
 # codes.t3.app
 [Desktop Entry]
-Name=Cursor
+Name=T3 Code
 Exec=zypak-run.sh
 Icon=codes.t3.app
 Type=Application

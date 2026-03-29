@@ -57,7 +57,7 @@ modules:
       - install -Dm644 codes.t3.app.desktop /app/share/applications/codes.t3.app.desktop
       - install -Dm644 codes.t3.app.appdata.xml /app/share/metainfo/codes.t3.app.appdata.xml
       - mkdir -p /app/share/icons/hicolor/256x256/apps
-      # - ffmpeg -width 256 -i squashfs-root/usr/share/pixmaps/co.anysphere.cursor.png -vf scale=256:-1 -frames:v 1 /app/share/icons/hicolor/256x256/apps/codes.t3.app.png
+      - ffmpeg -width 256 -i squashfs-root/usr/share/icons/hicolor/1024x1024/apps/t3-code-desktop.png -vf scale=256:-1 -frames:v 1 /app/share/icons/hicolor/256x256/apps/codes.t3.app.png
       - install -Dm755 run.sh /app/bin/zypak-run.sh
       - rm -rf squashfs-root
     sources:
