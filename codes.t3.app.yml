@@ -14,7 +14,7 @@ finish-args:
   # Audio
   - --socket=pulseaudio
   - --socket=ssh-auth
-  # Network access - Cursor needs this for its AI features
+  # Network access - needed for  AI features
   - --share=network
   - --persist=.vscode-oss
   - --allow=devel
@@ -52,7 +52,8 @@ modules:
         echo $OFFSET
         unsquashfs -f -d squashfs-root -o $OFFSET T3Codes.AppImage
       # Copy the extracted AppImage contents into the /app directory
-      - cp -r squashfs-root/usr /app/usr
+      - cp -r squashfs-root/* /app/
+      - chmod +x /app/t3-code-desktop
       # Install metadata files
       - install -Dm644 codes.t3.app.desktop /app/share/applications/codes.t3.app.desktop
       - install -Dm644 codes.t3.app.appdata.xml /app/share/metainfo/codes.t3.app.appdata.xml

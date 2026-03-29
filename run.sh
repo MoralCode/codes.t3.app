@@ -3,7 +3,7 @@ export ZYPAK_APP_IMAGE_PATH=/app
 export ZYPAK_APP_PATH=/app/
 
 function errmsg() {
-  >&2 echo "flatpak-cursor: $*"
+  >&2 echo "flatpak-t3codes: $*"
 }
 
 # Activate any enabled SDK extensions
@@ -29,4 +29,4 @@ for i in "${SDK[@]}"; do
   fi
 done
 
-exec /app/bin/zypak-wrapper /app/usr/share/cursor/cursor "$@"
+exec /app/bin/zypak-wrapper /app/t3-code-desktop "$@"
