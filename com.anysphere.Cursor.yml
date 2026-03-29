@@ -48,8 +48,10 @@ modules:
   - name: cursor
     buildsystem: simple
     build-commands:
-      - chmod +x ./Cursor.AppImage
-      - ./Cursor.AppImage --appimage-extract
+      - |
+        OFFSET=$(grep -aboh "hsqs" Cursor.AppImage | tail -n 1 | cut -d: -f1)
+        echo $OFFSET
+        unsquashfs -f -d squashfs-root -o $OFFSET Cursor.AppImage
       # Copy the extracted AppImage contents into the /app directory
       - cp -r squashfs-root/usr /app/usr
       # Install metadata files
