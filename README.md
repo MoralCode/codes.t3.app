@@ -1,10 +1,10 @@
-# Cursor AI - Building a restrictive Flatpak
+# T3 Code - Building a restrictive Flatpak
 
 This repository contains the necessary files and automation to build a
-restrictive, sandboxed Flatpak for the [Cursor AI](https://cursor.sh/) code
+restrictive, sandboxed Flatpak for the [T3 Code](https://t3.chat/) code
 editor.
 
-The primary goal is to provide a secure environment for running Cursor by
+The primary goal is to provide a secure environment for running T3 Code by
 limiting its access to the host system. The build process is automated with a
 `Makefile`, requiring only the version number and download URL for a new release
 to build and package it.
@@ -39,13 +39,13 @@ This repository contains the following files:
 
 - **`Makefile`**: The main script that automates the entire download, build, and
 installation process.
-- **`com.cursor.App.yml`**: The Flatpak manifest. This is the core blueprint
+- **`codes.t3.app.yml`**: The Flatpak manifest. This is the core blueprint
 that tells `flatpak-builder` how to construct the application, including its
 dependencies, sources, and sandbox permissions.
-- **`com.cursor.App.appdata.xml`**: AppStream metadata for the application. This
+- **`codes.t3.app.appdata.xml`**: AppStream metadata for the application. This
 file provides the information (name, description, version history) that software
 centers like GNOME Software and KDE Discover use to display the application.
-- **`com.cursor.App.desktop`**: The `.desktop` file that allows the application
+- **`codes.t3.app.desktop`**: The `.desktop` file that allows the application
 to be launched from your desktop environment's application menu.
 
 ## How to Build
@@ -53,19 +53,19 @@ to be launched from your desktop environment's application menu.
 The build process is managed entirely by the `Makefile`.
 
 1. **Find the Release URL and Version:**
-Go to the [Cursor Download History](https://github.com/oslook/cursor-ai-downloads)
+Go to the [T3 Code Download History](https://github.com/oslook/t3-code-downloads)
 or the official website to find the download URL for the Linux AppImage of the
 version you want to package.
 
 2. **Run the Build Command:**
 From the root of this project directory, run the `make` command, providing
-the `VERSION` and `CURSOR_URL` as arguments.
+the `VERSION` and `T3_URL` as arguments.
 
     **Example:**
 
     ```bash
     make build VERSION=x.y.z
-    CURSOR_URL="URL_FOR_XYZ_RELEASE_OBTAINED_FROM_WEBSITE"
+    T3_URL="URL_FOR_XYZ_RELEASE_OBTAINED_FROM_WEBSITE"
     ```
 
     This command will:
@@ -94,7 +94,7 @@ Once installed, you can normally run your application with:
 The `Makefile` provides several convenient targets:
 
 - `make build`: Downloads the AppImage and builds the Flatpak. (Requires
-`VERSION` and `CURSOR_URL`).
+`VERSION` and `T3_URL`).
 - `make install`: Installs the locally built Flatpak for the current user.
 - `make run`: Runs the installed Flatpak application.
 - `make uninstall`: Removes the Flatpak from your system.
@@ -112,7 +112,7 @@ For easy, on-the-fly permission management *without* rebuilding, you can use
     flatpak install flathub com.github.tchx84.Flatseal
     ```
 
-2. **Launch Flatseal** and select "Cursor" from the list of applications.
+2. **Launch Flatseal** and select "T3 Code" from the list of applications.
 3. You can now toggle permissions for filesystem access, network sockets, device
 access, and more. Changes are applied instantly.
 
