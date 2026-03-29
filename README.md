@@ -86,7 +86,7 @@ Once the build is complete, you can install it for your user with:
 Once installed, you can normally run your application with:
 
    ```bash
-   flatpak run com.anysphere.Cursor
+   flatpak run codes.t3.app
    ```
 
 ## Makefile Targets

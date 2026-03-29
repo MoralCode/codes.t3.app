@@ -1,4 +1,4 @@
-app-id: com.anysphere.Cursor
+app-id: codes.t3.app
 runtime: org.freedesktop.Sdk
 runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
@@ -55,25 +55,22 @@ modules:
       # Copy the extracted AppImage contents into the /app directory
       - cp -r squashfs-root/usr /app/usr
       # Install metadata files
-      - install -Dm644 com.anysphere.Cursor.desktop /app/share/applications/com.anysphere.Cursor.desktop
-      - install -Dm644 com.anysphere.Cursor.appdata.xml /app/share/metainfo/com.anysphere.cursor.appdata.xml
+      - install -Dm644 codes.t3.app.desktop /app/share/applications/codes.t3.app.desktop
+      - install -Dm644 codes.t3.app.appdata.xml /app/share/metainfo/codes.t3.app.appdata.xml
       - mkdir -p /app/share/icons/hicolor/256x256/apps
-      - ffmpeg -width 256 -i squashfs-root/usr/share/pixmaps/co.anysphere.cursor.png -vf scale=256:-1 -frames:v 1 /app/share/icons/hicolor/256x256/apps/com.anysphere.Cursor.png
+      - ffmpeg -width 256 -i squashfs-root/usr/share/pixmaps/co.anysphere.cursor.png -vf scale=256:-1 -frames:v 1 /app/share/icons/hicolor/256x256/apps/codes.t3.app.png
       - install -Dm755 run.sh /app/bin/zypak-run.sh
       - rm -rf squashfs-root
     sources:
       - type: file
         dest-filename: Cursor.AppImage
-        url: https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.6
-        sha256: ae63d7069207229f3bc85d0f0c986a220bed5ce5584f42571d3eba6329f08208
-        x-checker-data:
-          type: rotating-url
-          url: https://api2.cursor.sh/updates/download/golden/linux-x64/cursor/2.3
-          dest-filename: Cursor.AppImage
+        url: https://github.com/pingdotgg/t3code/releases/download/v0.0.14/T3-Code-0.0.14-x86_64.AppImage
+        sha256: ae63d7069207229f3bc85d0f0c989a26994c5dd7310c2ce44d15948b758a84b763bd556f6705df9a65d91cf457006a220bed5ce5584f42571d3eba6329f08208
+
       # These are the metadata files from our project directory
       - type: file
-        path: com.anysphere.Cursor.desktop
+        path: codes.t3.app.desktop
       - type: file
-        path: com.anysphere.Cursor.appdata.xml
+        path: codes.t3.app.appdata.xml
       - type: file
         path: run.sh

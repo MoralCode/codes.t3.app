@@ -1,8 +1,8 @@
-# com.anysphere.Cursor
+# codes.t3.app
 [Desktop Entry]
 Name=Cursor
 Exec=zypak-run.sh
-Icon=com.anysphere.Cursor
+Icon=codes.t3.app
 Type=Application
 Categories=Development;IDE;
 StartupNotify=true
