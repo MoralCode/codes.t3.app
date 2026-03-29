@@ -65,7 +65,7 @@ modules:
       - type: file
         dest-filename: Cursor.AppImage
         url: https://github.com/pingdotgg/t3code/releases/download/v0.0.14/T3-Code-0.0.14-x86_64.AppImage
-        sha256: ae63d7069207229f3bc85d0f0c989a26994c5dd7310c2ce44d15948b758a84b763bd556f6705df9a65d91cf457006a220bed5ce5584f42571d3eba6329f08208
+        sha256: 9a26994c5dd7310c2ce44d15948b758a84b763bd556f6705df9a65d91cf45700
 
       # These are the metadata files from our project directory
       - type: file
