@@ -28,15 +28,28 @@ finish-args:
   - --system-talk-name=org.freedesktop.login1
   # Unsure
   - --talk-name=org.freedesktop.Notifications
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node22
+build-options:
+  prepend-path: /usr/lib/sdk/node22/bin
 
 modules:
   # - shared-modules/libcanberra/libcanberra.json
   - name: claude-code
     buildsystem: simple
+    build-options:
+      env:
+        # Set the cache directory, used to find Electron and some other helper
+        # tools.
+        # (The directory format is: /run/build/MODULE_NAME/flatpak-node/cache)
+        XDG_CACHE_HOME: ${FLATPAK_BUILDER_BUILDDIR}/flatpak-node/cache
+        # Set the npm cache directory, used by npm to find its package metadata.
+        npm_config_cache: ${FLATPAK_BUILDER_BUILDDIR}/flatpak-node/npm-cache
     build-commands:
       # 1. Create the destination directory in the Flatpak runtime
       - install -d /app/bin
       # 2. Move the downloaded binary and rename it to 'claude'
+      - npm install --offline --prefix /app
       - install -D claude /app/bin/claude
     sources:
       - type: file
@@ -46,6 +59,11 @@ modules:
         url: https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.87/linux-x64/claude
         sha256: b1a5b89469862adee0e4dc28cab5a8314bc4d0117e19ab26a7b7ff7ce9b59bd5
         dest-filename: claude
+      - npm-sources.json
+      - type: file
+        path: package.json
+      - type: file
+        path: package-lock.json
   - name: squashfs-tools
     cleanup: [ '/bin/sqsh*', '/include', '/lib', '/share' ]
     sources:
