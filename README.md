@@ -53,9 +53,8 @@ to be launched from your desktop environment's application menu.
 The build process is managed entirely by the `Makefile`.
 
 1. **Find the Release URL and Version:**
-Go to the [T3 Code Download History](https://github.com/oslook/t3-code-downloads)
-or the official website to find the download URL for the Linux AppImage of the
-version you want to package.
++Go to the [T3 Code website](https://t3.chat/) to find the download URL for the
++Linux AppImage of the version you want to package.
 
 2. **Run the Build Command:**
 From the root of this project directory, run the `make` command, providing
@@ -64,8 +63,7 @@ the `VERSION` and `T3_URL` as arguments.
     **Example:**
 
     ```bash
-    make build VERSION=x.y.z
-    T3_URL="URL_FOR_XYZ_RELEASE_OBTAINED_FROM_WEBSITE"
+    make build VERSION=x.y.z T3_URL="URL_FOR_XYZ_RELEASE_OBTAINED_FROM_WEBSITE"
     ```
 
     This command will:
@@ -94,7 +92,7 @@ Once installed, you can normally run your application with:
 The `Makefile` provides several convenient targets:
 
 - `make build`: Downloads the AppImage and builds the Flatpak. (Requires
-`VERSION` and `T3_URL`).
+  `VERSION` and `T3_URL`).
 - `make install`: Installs the locally built Flatpak for the current user.
 - `make run`: Runs the installed Flatpak application.
 - `make uninstall`: Removes the Flatpak from your system.
