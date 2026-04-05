@@ -1,4 +1,4 @@
-# Makefile for building the Cursor Flatpak
+# Makefile for building the T3 Code Flatpak
 
 # --- Variables ---
 APP_ID := codes.t3.app
@@ -10,7 +10,7 @@ SQUASHFS_ROOT := squashfs-root
 ARCH ?= x86_64
 
 
-APPIMAGE_FILE = $(notdir $(CURSOR_URL))
+APPIMAGE_FILE = $(notdir $(T3_URL))
 
 .PHONY: all build install run clean uninstall
 
@@ -19,6 +19,7 @@ APPIMAGE_FILE = $(notdir $(CURSOR_URL))
 all: build
 
 # Builds the Flatpak. Depends on the AppImage being extracted.
+build: $(SQUASHFS_ROOT)
 	@echo "--> Building the Flatpak..."
 	# Update the version in the appdata file before building
 	flatpak-builder $(BUILD_DIR) $(MANIFEST) --force-clean
@@ -32,7 +33,7 @@ install: build
 
 # Uninstalls the application.
 uninstall:
-	@echo "--> Uninstalling Cursor..."
+	@echo "--> Uninstalling T3 Code..."
 	flatpak uninstall $(APP_ID)
 
 # --- Helper Targets ---
@@ -40,14 +41,14 @@ uninstall:
 # This target handles downloading and extracting the AppImage.
 # It's triggered by the 'build' target.
 
-Cursor-$(VERSION)-$(ARCH).AppImage:
+T3-Code-$(VERSION)-$(ARCH).AppImage:
 	@echo "--> Preparing AppImage..."
-	@echo "    Downloading from: $(CURSOR_URL)"
-	wget -O $(APPIMAGE_FILE) "$(CURSOR_URL)"
+	@echo "    Downloading from: $(T3_URL)"
+	wget -O $(APPIMAGE_FILE) "$(T3_URL)"
 	@echo "    Making executable..."
 	chmod +x $(APPIMAGE_FILE)
 
-$(SQUASHFS_ROOT): Cursor-$(VERSION)-$(ARCH).AppImage
+$(SQUASHFS_ROOT): T3-Code-$(VERSION)-$(ARCH).AppImage
 	@echo "    Extracting AppImage..."
 	./$(APPIMAGE_FILE) --appimage-extract
 	@echo "    Extraction complete. Extracted to '$(SQUASHFS_ROOT)'."
